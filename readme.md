@@ -12,7 +12,7 @@
 7. access to sonarqube at the address http://localhost:9000  
  
 ## creation
-These image are modified version of CnesCat lab:
+These images are modified version of CnesCat lab:
 * sonarqube     : https://github.com/cnescatlab/sonarqube.git 
 * sonar-scanner : https://github.com/cnescatlab/sonar-scanner.git
 
