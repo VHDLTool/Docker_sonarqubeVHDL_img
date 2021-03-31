@@ -7,7 +7,7 @@
 
 4. create a network for the two containers: `docker network create sonarbridge`   
    you can inspect IPs parameters with command: `docker inspect sonarbridge`
-5. launch your sonarqube instance with command : `docker run --name sonarqubeVM --net sonarbridge --rm -p 9000:9000 -e SONARQUBE_ADMIN_PASSWORD="adminpassword" lequal/sonar-sonarqube:latest` you can change the admin password in this command line.
+5. launch your sonarqube instance with command : `docker run --name sonarqubeVM --net sonarbridge --rm -p 9000:9000 -e SONARQUBE_ADMIN_PASSWORD="adminpassword" lequal/sonarqube-vhdl:latest` you can change the admin password in this command line.
    you can inspect IPs parameters with command: `docker inspect sonarbridge`
 6. execute the command `docker run --net sonarbridge --rm  -e SONAR_HOST_URL="http://172.18.0.2:9000" -v "$(pwd):/usr/src" lequal/sonar-scanner` in the folder with your VHDL code .Be careful to change the IP address with the one of your  
 7. access to sonarqube at the address http://localhost:9000  
