@@ -33,4 +33,4 @@ To create the docker image do:
 * install docker
 * execute in a terminal `docker build -t vhdltool/sonar-sonarqube .` and `docker build -t lequal/sonar-scanner .` for each repository.
 
-You can export the images with the commands `docker save --output sonar-sonarqube.tar vhdltool/sonar-sonarqube:latest` and `docker save --output sonar-scanner.tar lequal/sonar-scanner:latest `
+You can export the images with the commands `docker save --output sonar-sonarqube-vhdl.tar vhdltool/sonar-sonarqube-vhdl:latest` and `docker save --output sonar-scanner-vhdl.tar lequal/sonar-scanner-vhdl:latest `
