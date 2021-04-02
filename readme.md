@@ -9,7 +9,7 @@
    you can inspect IPs parameters with command: `docker inspect sonarbridge`
 5. launch your sonarqube instance with command : `docker run --name sonarqubeVM --net sonarbridge --rm -p 9000:9000 -e SONARQUBE_ADMIN_PASSWORD="adminpassword" lequal/sonarqube-vhdl:latest` you can change the admin password in this command line.
    you can inspect IPs parameters with command: `docker inspect sonarbridge`
-6. execute the command `docker run --net sonarbridge --rm  -e SONAR_HOST_URL="http://172.18.0.2:9000" -v "$(pwd):/usr/src" lequal/sonar-scanner` in the folder with your VHDL code .Be careful to change the IP address with the one of your  
+6. execute the command `docker run --net sonarbridge --rm  -e SONAR_HOST_URL="http://172.18.0.2:9000" -v "$(pwd):/usr/src" lequal/sonar-scanner-vhdl` in the folder with your VHDL code .Be careful to change the IP address with the one of your  
 7. access to sonarqube at the address http://localhost:9000  
  
 ## creation
@@ -31,6 +31,6 @@ The dockerfiles to create docker images including vhdlRC are locate at:
 To create the docker image do:
 * clone each previous project
 * install docker
-* execute in a terminal `docker build -t vhdltool/sonar-sonarqube .` and `docker build -t lequal/sonar-scanner .` for each repository.
+* execute in a terminal `docker build -t vhdltool/sonar-sonarqube-vhdl .` and `docker build -t lequal/sonar-scanner-vhdl .` for each repository.
 
 You can export the images with the commands `docker save --output sonar-sonarqube-vhdl.tar vhdltool/sonar-sonarqube-vhdl:latest` and `docker save --output sonar-scanner-vhdl.tar lequal/sonar-scanner-vhdl:latest `
