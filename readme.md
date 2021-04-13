@@ -30,5 +30,11 @@ The dockerfiles to create docker images including vhdlRC are locate at:
 To create the docker image do:
 * clone each previous project
 * install docker
+<<<<<<< HEAD
 * follow the associated readme for [server](https://github.com/VHDLTool/Docker-sonarqube-vhdl/blob/develop/README.md#developers-guide) and [scanner](https://github.com/VHDLTool/Docker-sonar-scanner-vhdl/blob/develop/README.md#developers-guide)
 * You can export the images with the commands `docker save --output sonarqube-vhdl.tar lequal/sonarqube-vhdl:latest   ` and `docker save --output sonar-scanner.tar lequal/sonar-scanner-vhdl:latest `
+=======
+* execute in a terminal `docker build -t vhdltool/sonar-sonarqube-vhdl .` and `docker build -t lequal/sonar-scanner-vhdl .` for each repository.
+
+You can export the images with the commands `docker save --output sonar-sonarqube-vhdl.tar vhdltool/sonar-sonarqube-vhdl:latest` and `docker save --output sonar-scanner-vhdl.tar lequal/sonar-scanner-vhdl:latest `
+>>>>>>> 169dd9f6a79dd0bf2e6046148d620bb0e43f1850
