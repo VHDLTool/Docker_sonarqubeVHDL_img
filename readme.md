@@ -2,16 +2,16 @@
 
 ## Installation
 1. install docker
-2. download the two images sonar-scanner.tar and sonar-sonarqube.tar
-3. import images with command : `docker load --input sonar-sonarqube.tar` and `docker load --input sonar-scanner.tar`
+2. download the images for the [sonarqube scanner](https://github.com/VHDLTool/Docker-sonar-scanner-vhdl/releases) and the [sonarqube server](https://github.com/VHDLTool/Docker-sonarqube-vhdl/releases)
+3. import images with command : `docker load --input  sonarqube-vhdl.tar` and `docker load --input sonar-scanner-vhdl.tar`*(Please unzip the scanner image to get access to the tar file)* 
 4. create a network for the two containers: `docker network create sonarbridge`   
    you can inspect IPs parameters with command: `docker inspect sonarbridge`
-5. launch your sonarqube instance with command : `docker run --name sonarqubeVM --net sonarbridge --rm -p 9000:9000 -e SONARQUBE_ADMIN_PASSWORD="adminpassword" vhdltool/sonar-sonarqube:latest` you can change the admin password in this command line.
+5. launch your sonarqube instance with command : `docker run --name sonarqubeVM --net sonarbridge --rm -p 9000:9000 -e SONARQUBE_ADMIN_PASSWORD="adminpassword" lequal/sonarqube-vhdl:latest` you can change the admin password in this command line.
    you can inspect IPs parameters with command: `docker inspect sonarbridge`
-6. execute the command `docker run --net sonarbridge --rm  -e SONAR_HOST_URL="http://172.18.0.2:9000" -v "$(pwd):/usr/src" vhdltool/sonar-scanner` in the folder with your VHDL code .Be careful to change the IP address with the one of your  
+6. execute the command `docker run --net sonarbridge --rm  -e SONAR_HOST_URL="http://172.18.0.2:9000" -v "$(pwd):/usr/src" lequal/sonar-scanner-vhdl:latest` in the folder with your VHDL code .Be careful to change the IP address with the one extracted at step 4.
 7. access to sonarqube at the address http://localhost:9000  
  
-## creation
+## Creation
 These image are modified version of CnesCat lab:
 * sonarqube     : https://github.com/cnescatlab/sonarqube.git 
 * sonar-scanner : https://github.com/cnescatlab/sonar-scanner.git
@@ -30,6 +30,5 @@ The dockerfiles to create docker images including vhdlRC are locate at:
 To create the docker image do:
 * clone each previous project
 * install docker
-* execute in a terminal `docker build -t vhdltool/sonar-sonarqube .` and `docker build -t vhdltool/sonar-scanner .` for each repository.
-
-You can export the images with the commands `docker save --output sonar-sonarqube.tar vhdltool/sonar-sonarqube:latest` and `docker save --output sonar-scanner.tar vhdltool/sonar-scanner:latest `
+* follow the associated readme for [server](https://github.com/VHDLTool/Docker-sonarqube-vhdl/blob/develop/README.md#developers-guide) and [scanner](https://github.com/VHDLTool/Docker-sonar-scanner-vhdl/blob/develop/README.md#developers-guide)
+* You can export the images with the commands `docker save --output sonarqube-vhdl.tar lequal/sonarqube-vhdl:latest   ` and `docker save --output sonar-scanner.tar lequal/sonar-scanner-vhdl:latest `
