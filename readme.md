@@ -7,8 +7,11 @@
 4. create a network for the two containers: `docker network create sonarbridge`   
 5. launch your sonarqube instance with command : `docker run --name sonarqubeVM --net sonarbridge --rm -p 9000:9000 -e SONARQUBE_ADMIN_PASSWORD="adminpassword" lequal/sonarqube-vhdl:latest` you can change the admin password in this command line.
    you can get the sonarqube server IP with command: `docker inspect sonarbridge`
-6. execute the command `docker run --net sonarbridge --rm  -e SONAR_HOST_URL="http://172.18.0.2:9000" -v "$(pwd):/usr/src" lequal/sonar-scanner-vhdl:latest` in the folder with your VHDL code (for the project example it would be plasma).Be careful to change the IP address with the one extracted at step 5.
-7. access to sonarqube at the address http://localhost:9000  
+6. get the plasma example design at https://github.com/VHDLTool/Docker_sonarqubeVHDL_img/releases and unzip it
+7. execute the command `docker run --net sonarbridge --rm  -e SONAR_HOST_URL="http://172.18.0.2:9000" -v "$(pwd):/usr/src" lequal/sonar-scanner-vhdl:latest` in the folder with your VHDL code (same location as the `sonar-project.properties` file).Be careful to change the server IP address with the one extracted at step 5.
+8. access to sonarqube at the address http://localhost:9000 
+
+*Note* by default all the implemented rules are enabled. That is to say CNES default ones and its derivated NXE. As some rules are duplicated, so issues will be. Please create a custom quality profile to select which rule you want to be checked (and remove doubles).
  
 ## Creation
 These image are modified version of CnesCat lab:
@@ -29,11 +32,6 @@ The dockerfiles to create docker images including vhdlRC are locate at:
 To create the docker image do:
 * clone each previous project
 * install docker
-<<<<<<< HEAD
 * follow the associated readme for [server](https://github.com/VHDLTool/Docker-sonarqube-vhdl/blob/develop/README.md#developers-guide) and [scanner](https://github.com/VHDLTool/Docker-sonar-scanner-vhdl/blob/develop/README.md#developers-guide)
 * You can export the images with the commands `docker save --output sonarqube-vhdl.tar lequal/sonarqube-vhdl:latest   ` and `docker save --output sonar-scanner.tar lequal/sonar-scanner-vhdl:latest `
-=======
-* execute in a terminal `docker build -t vhdltool/sonar-sonarqube-vhdl .` and `docker build -t lequal/sonar-scanner-vhdl .` for each repository.
 
-You can export the images with the commands `docker save --output sonar-sonarqube-vhdl.tar vhdltool/sonar-sonarqube-vhdl:latest` and `docker save --output sonar-scanner-vhdl.tar lequal/sonar-scanner-vhdl:latest `
->>>>>>> 169dd9f6a79dd0bf2e6046148d620bb0e43f1850
