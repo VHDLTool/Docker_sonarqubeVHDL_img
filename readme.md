@@ -10,7 +10,9 @@ For an offline installation:
 4. launch your sonarqube instance with command : `docker run --name sonarqubeVM --net sonarbridge --rm -p 9000:9000 -e SONARQUBE_ADMIN_PASSWORD="adminpassword" lequal/sonarqube-vhdl:latest` you can change the admin password in this command line.
    you can get the sonarqube server IP with command: `docker inspect sonarbridge`
 5. get the plasma example design at https://github.com/VHDLTool/Docker_sonarqubeVHDL_img/releases and unzip it
-6. execute the command `docker run --net sonarbridge --rm  -e SONAR_HOST_URL="http://172.18.0.2:9000" -v "$(pwd):/usr/src" lequal/sonar-scanner-vhdl:latest` in the folder with your VHDL code (same location as the `sonar-project.properties` file).Be careful to change the server IP address with the one extracted at step 4.
+6. execute the command `docker run --net sonarbridge --rm  -e SONAR_HOST_URL="http://172.18.0.2:9000" -v "$(pwd):/usr/src" lequal/sonar-scanner-vhdl:latest` in the folder with your VHDL code (same location as the `sonar-project.properties` file).Be careful to change the server IP address with the one extracted at step 4.    
+**Note** If you encounter any errorduring scan activity, this can comes from access right between your account and the docker one. Try adding to the previous command line:   
+```--name <My loging with right on the scanned folder>```  
 7. access to sonarqube at the address http://localhost:9000 
 
 *Note* by default all the implemented rules are enabled. That is to say CNES default ones and its derivated NXE. As some rules are duplicated, so issues will be. Please create a custom quality profile to select which rule you want to be checked (and remove doubles).
