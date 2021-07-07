@@ -16,6 +16,13 @@ For an offline installation:
 7. access to sonarqube at the address http://localhost:9000 
 
 *Note* by default all the implemented rules are enabled. That is to say CNES default ones and its derivated NXE. As some rules are duplicated, so issues will be. Please create a custom quality profile to select which rule you want to be checked (and remove doubles).
+
+**Note** If you want to make your analysis persistent, instead of launching sonarqube server docker image (step 4) do so:    
+4.a. create at which location you want, three folders : `conf` , `data` and `logs` which will hold sonarqube persistent elements     
+4.b. launch sonarqube with the following command line (be careful to use absolute paths and os specific path notation):      
+`docker run --name sonarqubeVM -v C:\My\absolute\windows\path\to\sonarqube\conf:/opt/sonarqube/conf -v C:\My\absolute\windows\path\to\sonarqube\data:/opt/sonarqube/data -v C:\My\absolute\windows\path\to\sonarqube\logs:/opt/sonarqube/logs --net sonarbridge --rm -p 9000:9000 -e SONARQUBE_ADMIN_PASSWORD="adminpassword" lequal/sonarqube-vhdl:latest
+`    
+4.c. when you finished your analysis and want to close sonarqube please use the following command to close properly sonarqube docker image: `docker stop -t=30 sonarqubeVM`    
  
 ## Creation
 These image are modified version of CnesCat lab:
